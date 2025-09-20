@@ -24,7 +24,7 @@ currentButtonState = digitalRead(btn);
     triggered = true;
   }
 
-  lastButtonState = currentButtonState;
+  lastButtonState = currentButtonState; // keeps track the last state
 
   if (triggered) {
     triggered = false;  // reset so it doesn't repeat
@@ -39,6 +39,7 @@ currentButtonState = digitalRead(btn);
   }
 }
 
+//made a function to easily organize the code just incase im gonna add anything in the future :)))))
 void displayMessage() {
   lcd.clear();
   lcd.setCursor(1, 0);
