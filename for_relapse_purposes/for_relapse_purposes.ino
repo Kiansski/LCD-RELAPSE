@@ -6,6 +6,7 @@ LiquidCrystal_I2C lcd(0x27, 16, 2);
 const int btn = 8;
 bool lastButtonState = HIGH;  // assume not pressed initially
 bool triggered = false;
+bool currentButtonState;
 
 void setup() {
   lcd.init();
@@ -16,7 +17,7 @@ void setup() {
 
 void loop() {
 
-  bool currentButtonState = digitalRead(btn);
+currentButtonState = digitalRead(btn);
 
   // Detect falling edge (button just pressed)
   if (lastButtonState == HIGH && currentButtonState == LOW) {
