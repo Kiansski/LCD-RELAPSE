@@ -11,26 +11,26 @@ bool currentButtonState;
 void setup() {
   lcd.init();
   lcd.backlight();
-  pinMode(btn, INPUT_PULLUP);  // use internal pull-up resistor
+  pinMode(btn, INPUT_PULLUP);  // use internal pull-up button
   Serial.begin(9600); 
 }
 
 void loop() {
 
-currentButtonState = digitalRead(btn);
+currentButtonState = digitalRead(btn); //keeps track of the current state
 
-  // Detect falling edge (button just pressed)
+  // detect button press
   if (lastButtonState == HIGH && currentButtonState == LOW) {
-    triggered = true;
+    triggered = true; //change the triggered state
   }
 
   lastButtonState = currentButtonState; // keeps track the last state
 
   if (triggered) {
-    triggered = false;  // reset so it doesn't repeat
-    displayMessage();   // run your message function
+    triggered = false;  // make it turn back into the initial state
+    displayMessage();   // run function 1
   }
-
+//standby display (wait for button press)
   else{
   lcd.setCursor(2,0);
   lcd.print("RELAPSE TIME");
